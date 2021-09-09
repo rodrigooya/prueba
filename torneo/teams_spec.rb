@@ -26,4 +26,14 @@ RSpec.describe Teams do
             expect(@team.jugadores[0].name).to eq('Rodrigo Oyarzun')
         end 
     end
+    context 'puntaje total' do
+        before(:each) do
+            @team = Teams.new '0001', 'team 1'
+        end
+        it '#puntaje' do
+        @team.loadjugadores '0001', 'Rodrigo Oyarzun', 25, '00001-9', 'Negro', 3,1,1
+        @team.loadjugadores '0002', 'Alonso Oyarzun', 22, '00002-6', 'Negro', 2,2,1
+        expect(@team.calculate_total_points).to eq(29)
+        end
+    end
 end
