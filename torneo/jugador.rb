@@ -10,4 +10,7 @@ class Jugador
         @match_draw = match_draw
         @match_lose = match_lose
     end
+    def player_points 
+        player_points = @match_win*4 + @match_draw*3
+    end
 end
