@@ -18,4 +18,17 @@ class Teams
         end
         @total_points
     end
+    def busqueda rut
+        for jugador in @jugadores
+            if jugador.rut == rut
+                puts "#{jugador.code} #{jugador.name} #{jugador.rut} #{jugador.color} #{jugador.player_points}"
+            end
+        end
+    end
 end
+
+team = Teams.new '001','team1'
+team.loadjugadores '0001', 'Rodrigo Oyarzun', 25, '00001-9', 'Negro', 3,1,1
+team.loadjugadores '0002', 'Alonso Oyarzun', 22, '00002-6', 'Negro', 2,2,1
+puts team.calculate_total_points
+team.busqueda '00001-9'
