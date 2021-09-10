@@ -31,9 +31,14 @@ RSpec.describe Teams do
             @team = Teams.new '0001', 'team 1'
         end
         it '#puntaje' do
-        @team.loadjugadores '0001', 'Rodrigo Oyarzun', 25, '00001-9', 'Negro', 3,1,1
-        @team.loadjugadores '0002', 'Alonso Oyarzun', 22, '00002-6', 'Negro', 2,2,1
-        expect(@team.calculate_total_points).to eq(29)
+            @team.loadjugadores '0001', 'Rodrigo Oyarzun', 25, '00001-9', 'Negro', 3,1,1
+            @team.loadjugadores '0002', 'Alonso Oyarzun', 22, '00002-6', 'Negro', 2,2,1
+            expect(@team.calculate_total_points).to eq(29)
+        end
+        it '#busqueda' do
+            @team.loadjugadores '0001', 'Rodrigo Oyarzun', 25, '00001-9', 'Negro', 3,1,1
+            @team.loadjugadores '0002', 'Alonso Oyarzun', 22, '00002-6', 'Negro', 2,2,1
+            expect(@team.busqueda '00001-9').to be("00001-9")
         end
     end
 end
