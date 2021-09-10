@@ -15,9 +15,15 @@ RSpec.describe Torneo do
         before(:each) do
             @torneo = Torneo.new
         end
-        it 'load' do
+        it '#load' do
             team = Teams.new '0001','team 1'
             @torneo.loadteams '0001', 'team 1' 
+            expect(@torneo.teams[0].code_team).to eq('0001')
+        end
+        it '#loadplayers' do
+            team = Teams.new '0001','team 1'
+            @torneo.loadteams '0001', 'team 1'
+            @torneo.addplayers '0001','0011', 'Rodrigo Oyarzun', 25, '00001-9', 'Negro', 3,1,1
             expect(@torneo.teams[0].code_team).to eq('0001')
         end
     end
