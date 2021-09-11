@@ -43,7 +43,7 @@ class Torneo
             end
         end
         if sum == @jugadores.length
-            puts "no esta"
+            puts "Jugador no encontrado"
         end
     end
     def modificar_win rut, match_win
@@ -53,6 +53,7 @@ class Torneo
                     jugador.match_win = match_win
                 end
             end
+            team.total_points = 0
             team.calculate_total_points
         end        
     end
@@ -117,11 +118,12 @@ torneo.listar_players
 
 
 torneo.busqueda_player('00009-0')
-#torneo.modificar_win('00009-0',4)
-#torneo.busqueda_player('00009-0')
-#torneo.win
-#torneo.tabla
-#torneo.tabla_equipos
+#torneo.busqueda_player('00067-9')
+torneo.modificar_win('00009-0',5)
+torneo.busqueda_player('00009-0')
+torneo.win
+torneo.tabla
+torneo.tabla_equipos
 
 
 
