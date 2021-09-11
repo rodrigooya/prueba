@@ -1,6 +1,6 @@
 require_relative 'jugador'
 class Teams
-    attr_accessor :code_team, :name_team, :jugadores
+    attr_accessor :code_team, :name_team, :jugadores, :total_points
     def initialize (code_team, name_team)
         @code_team = code_team
         @name_team = name_team
@@ -18,14 +18,6 @@ class Teams
         end
         for jugador in @jugadores
             @total_points = @total_points + jugador.calculate_player_points
-        end
-        @total_points
-    end
-    def busqueda rut
-        for jugador in @jugadores
-            if jugador.rut == rut
-                puts "#{jugador.name} #{jugador.player_points}"
-            end
         end
     end
 end
