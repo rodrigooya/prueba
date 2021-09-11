@@ -33,7 +33,8 @@ RSpec.describe Teams do
         it '#puntaje' do
             @team.loadjugadores '0001', 'Rodrigo Oyarzun', 25, '00001-9', 'Negro', 3,1,1
             @team.loadjugadores '0002', 'Alonso Oyarzun', 22, '00002-6', 'Negro', 2,2,1
-            expect(@team.calculate_total_points).to eq(29)
+            @team.calculate_total_points
+            expect(@team.total_points).to eql(29)
         end
     end
 end
