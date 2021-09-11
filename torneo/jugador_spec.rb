@@ -38,7 +38,7 @@ RSpec.describe Jugador do
             @jugador = Jugador.new '0001', 'Rodrigo Oyarzun', 25, '00001-9', 'Negro', 3,1,1
         end
         it '#new' do
-            expect(@jugador.player_points).to be(15)
+            expect(@jugador.calculate_player_points).to be(15)
         end
     end
 end
