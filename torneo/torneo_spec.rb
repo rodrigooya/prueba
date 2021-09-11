@@ -63,8 +63,11 @@ RSpec.describe Torneo do
             @torneo.addplayers '0003','0032', 'Antonio Poblete', 27, '00010-2', 'Marron', 3,0,2
             @torneo.addplayers '0003','0033', 'Tomas Caro', 28, '000011-5', 'Azul', 1,2,2
             @torneo.addplayers '0003','0034', 'Claudio Parra', 23, '000012-6', 'Verde', 1,2,2
-            jugador = @torneo.busqueda_player '00001-9'
-            expect(jugador[0].jugadores[0].rut).to eq("00001-9")
+            msg = <<~PUBLICHED
+            codigo    nombre        edad      rut      cinturon   ganadas    empatadas   perdidas    total
+            0011   Rodrigo Oyarzun  25     00001-9      Negro        4        1           0         19
+            PUBLICHED
+            expect{@torneo.busqueda_player('00001-9')}.to output(msg).to_stdout        
         end
         it '#modificar win' do
             team = Teams.new '0001','team 1'
@@ -113,32 +116,20 @@ RSpec.describe Torneo do
         @torneo.loadteams '0003','tamm 3'
         @torneo.addplayers '0001','0011', 'Rodrigo Oyarzun', 25, '00001-9', 'Negro', 4,1,0
         @torneo.addplayers '0001','0012', 'Juan Perez', 24, '00002-6', 'Negro', 2,2,1
-        @torneo.addplayers '0001','0013', 'Pedro Muñoz', 21, '00003-7', 'Verde', 1,3,1
-        @torneo.addplayers '0001','0014', 'Alvaro Jara', 29, '00004-5', 'Azul', 1,1,3
         @torneo.addplayers '0002','0021', 'Jose Rojas', 20, '00005-7', 'Marron', 2,2,1
         @torneo.addplayers '0002','0022', 'Jorge Torres', 27, '00006-2', 'Negro', 3,0,2
-        @torneo.addplayers '0002','0023', 'Miguel Lopez', 28, '00007-5', 'Azul', 1,1,3
-        @torneo.addplayers '0002','0024', 'Manuel Diaz', 23, '00008-6', 'Verde', 1,2,2
         @torneo.addplayers '0003','0031', 'Andres Cisternas', 21, '00009-0', 'Negro', 3,1,1
         @torneo.addplayers '0003','0032', 'Antonio Poblete', 27, '00010-2', 'Marron', 3,0,2
-        @torneo.addplayers '0003','0033', 'Tomas Caro', 28, '000011-5', 'Azul', 1,2,2
-        @torneo.addplayers '0003','0034', 'Claudio Parra   ', 23, '00012-6', 'Verde ', 1,2,2
         @torneo.listar_players
         msg = <<~PUBLICHED
         -----------------------------------TABLA FINAL------------------------------------------------
         codigo    nombre        edad      rut      cinturon   ganadas    empatadas   perdidas    total
         0011   Rodrigo Oyarzun  25     00001-9      Negro        4        1           0         19
         0031   Andres Cisternas  21     00009-0      Negro        3        1           1         15
-        0012   Juan Perez  24     00002-6      Negro        2        2           1         14
         0021   Jose Rojas  20     00005-7      Marron        2        2           1         14
-        0013   Pedro Muñoz  21     00003-7      Verde        1        3           1         13
-        0022   Jorge Torres  27     00006-2      Negro        3        0           2         12
+        0012   Juan Perez  24     00002-6      Negro        2        2           1         14
         0032   Antonio Poblete  27     00010-2      Marron        3        0           2         12
-        0024   Manuel Diaz  23     00008-6      Verde        1        2           2         10
-        0033   Tomas Caro  28     000011-5      Azul        1        2           2         10
-        0034   Claudio Parra     23     00012-6      Verde         1        2           2         10
-        0014   Alvaro Jara  29     00004-5      Azul        1        1           3         7
-        0023   Miguel Lopez  28     00007-5      Azul        1        1           3         7
+        0022   Jorge Torres  27     00006-2      Negro        3        0           2         12
         PUBLICHED
         expect{@torneo.tabla}.to output(msg).to_stdout        
         end
