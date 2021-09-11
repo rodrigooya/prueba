@@ -31,12 +31,19 @@ class Torneo
         @jugadores = c
     end
     def busqueda_player rut
+        sum = 0
         for team in @teams
             team.jugadores.each do |jugador|
                 if jugador.rut == rut
-                    puts "#{jugador.name} #{jugador.player_points}"
+                    puts 'codigo    nombre        edad      rut      cinturon   ganadas    empatadas   perdidas    total'
+                    puts "#{jugador.code}   #{jugador.name}  #{jugador.age}     #{jugador.rut}      #{jugador.color}        #{jugador.match_win}        #{jugador.match_draw}           #{jugador.match_lose}         #{jugador.player_points}"
+                else
+                    sum = sum + 1
                 end
             end
+        end
+        if sum == @jugadores.length
+            puts "no esta"
         end
     end
     def modificar_win rut, match_win
@@ -108,7 +115,8 @@ torneo.addplayers '0006','0064', 'jugador 12      ', 23, '00024-6', 'Verde ', 1,
 
 torneo.listar_players
 
-#torneo.busqueda_player('00009-0')
+
+torneo.busqueda_player('00009-0')
 #torneo.modificar_win('00009-0',4)
 #torneo.busqueda_player('00009-0')
 #torneo.win
