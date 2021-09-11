@@ -14,9 +14,6 @@ class Teams
     end
     def calculate_total_points
         for jugador in @jugadores
-            jugador.calculate_player_points
-        end
-        for jugador in @jugadores
             @total_points = @total_points + jugador.calculate_player_points
         end
     end
