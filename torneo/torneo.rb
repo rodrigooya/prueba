@@ -117,13 +117,13 @@ torneo.addplayers '0006','0064', 'jugador 12      ', 23, '00024-6', 'Verde ', 1,
 torneo.listar_players
 
 
-torneo.busqueda_player('00009-0')
+#torneo.busqueda_player('00009-0')
 #torneo.busqueda_player('00067-9')
-torneo.modificar_win('00009-0',5)
-torneo.busqueda_player('00009-0')
-torneo.win
-torneo.tabla
-torneo.tabla_equipos
+#torneo.modificar_win('00009-0',5)
+#torneo.busqueda_player('00009-0')
+#torneo.win
+#torneo.tabla
+#torneo.tabla_equipos
 
 
 
