@@ -115,21 +115,21 @@ RSpec.describe Torneo do
         @torneo.loadteams '0002','tamm 2'
         @torneo.loadteams '0003','tamm 3'
         @torneo.addplayers '0001','0011', 'Rodrigo Oyarzun', 25, '00001-9', 'Negro', 4,1,0
-        @torneo.addplayers '0001','0012', 'Juan Perez', 24, '00002-6', 'Negro', 2,2,1
+        @torneo.addplayers '0001','0012', 'Juan Perez', 24, '00002-6', 'Negro', 2,3,0
         @torneo.addplayers '0002','0021', 'Jose Rojas', 20, '00005-7', 'Marron', 2,2,1
         @torneo.addplayers '0002','0022', 'Jorge Torres', 27, '00006-2', 'Negro', 3,0,2
         @torneo.addplayers '0003','0031', 'Andres Cisternas', 21, '00009-0', 'Negro', 3,1,1
-        @torneo.addplayers '0003','0032', 'Antonio Poblete', 27, '00010-2', 'Marron', 3,0,2
+        @torneo.addplayers '0003','0032', 'Antonio Poblete', 27, '00010-2', 'Marron', 2,1,2
         @torneo.listar_players
         msg = <<~PUBLICHED
         -----------------------------------TABLA FINAL------------------------------------------------
         codigo    nombre        edad      rut      cinturon   ganadas    empatadas   perdidas    total
         0011   Rodrigo Oyarzun  25     00001-9      Negro        4        1           0         19
+        0012   Juan Perez  24     00002-6      Negro        2        3           0         17
         0031   Andres Cisternas  21     00009-0      Negro        3        1           1         15
         0021   Jose Rojas  20     00005-7      Marron        2        2           1         14
-        0012   Juan Perez  24     00002-6      Negro        2        2           1         14
-        0032   Antonio Poblete  27     00010-2      Marron        3        0           2         12
         0022   Jorge Torres  27     00006-2      Negro        3        0           2         12
+        0032   Antonio Poblete  27     00010-2      Marron        2        1           2         11
         PUBLICHED
         expect{@torneo.tabla}.to output(msg).to_stdout        
         end
